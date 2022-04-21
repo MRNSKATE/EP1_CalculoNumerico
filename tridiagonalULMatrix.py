@@ -85,18 +85,22 @@ addVectorOnMatrix("c", vectorc, matrix)
 
 print(matrix)
 
+UMatrix = newSquareMatrix(ordemMatrix)
+LMatrix = newSquareMatrix(ordemMatrix)
+LVector = []
 line = 1
 column = 0
 
 while line < ordemMatrix:
-    while column < ordemMatrix:
-        if matrix[line-1][column] != 0:
-            li = matrix[line][column]/matrix[line-1][column]
-        else:
-            li = 0
-        for i in range(len(matrix[line])):
-            matrix[line][i] = matrix[line][i] - li*matrix[line-1][column]
+    multi = matrix[line][column]/matrix[line-1][column]
+    LMatrix[line][column] = multi
+    LVector.append(multi)
+    for i in range(2):
+        matrix[line][column] = matrix[line][column] - multi*matrix[line-1][column]
         column = column + 1
     line = line + 1
+    column = line - 1
 
 print(matrix)
+print(LMatrix)
+print(LVector)
