@@ -78,29 +78,33 @@ while i < ordemMatrix-1 :
 
     i = i + 1
 
-#Construção da matriz
+#Construção da matriz A
 addVectorOnMatrix("a", vectora, matrix)
 addVectorOnMatrix("b", vectorb, matrix)
 addVectorOnMatrix("c", vectorc, matrix)
 
-print(matrix)
+#A Matriz U possui a seguinte verdade u(i,i+1) = a(i,i+1)
+uMatrix = newSquareMatrix(ordemMatrix)
+addVectorOnMatrix("c", vectorc, uMatrix)
+uMatrix[0] = matrix[0]
 
-UMatrix = newSquareMatrix(ordemMatrix)
-LMatrix = newSquareMatrix(ordemMatrix)
-LVector = []
+lMatrix = newSquareMatrix(ordemMatrix)
+lVector = []
 line = 1
 column = 0
 
 while line < ordemMatrix:
     multi = matrix[line][column]/matrix[line-1][column]
-    LMatrix[line][column] = multi
-    LVector.append(multi)
+    lMatrix[line][column] = multi
+    lVector.append(multi)
     for i in range(2):
         matrix[line][column] = matrix[line][column] - multi*matrix[line-1][column]
         column = column + 1
+        if line == column:
+            uMatrix[line][column] = vectorb[line] - multi*vectorc[line-1]
     line = line + 1
     column = line - 1
 
-print(matrix)
-print(LMatrix)
-print(LVector)
+print(lMatrix)
+print(uMatrix)
+print(lVector)
