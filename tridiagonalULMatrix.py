@@ -1,110 +1,70 @@
+from createMatrix import *
 
-"""tridiagonalMatrix = [[1, 1, 0], [1, 1, 1], [0, 1, 1]]
-matrixL = [tridiagonalMatrix[0], [0, 0, 0], [0, 0, 0]]
+def firstExercise():
+    print('O primeiro exercício consiste em realizar uma decomposição LU de uma matriz tridiagonal.\n Lembre-se, a matriz a ser introduzida deve ser triangularizável pelo Método de Eliminação de Gauss sem trocas de linhas')
+    ordemMatrix = int(input("Insira a ordem da sua matriz:"))
 
-def findULMatrix(matrix):
-    numberProcess = 1
-    i = 1
-    print(len(matrix))
-    while numberProcess <= len(matrix) - 1:
-        if (matrix[i-1][i] != 0):
-            li = matrix[i][i]/matrix[i-1][i]
-            print(li)
-            matrixL[i][i] = li
-        numberProcess += 1
-        i += 1 
-    """
-"""for numberProcess in len(tridiagonalMatrix):
-        i = 1
-        if (tridiagonalMatrix[i-1][i] != 0):
-            li = tridiagonalMatrix[i][i]/tridiagonalMatrix[i-1][i]
-            print(li)"""
+    matrix = newSquareMatrix(ordemMatrix)
+    vectora = []
+    vectorb = []
+    vectorc = []
 
-"""findULMatrix(tridiagonalMatrix)
-print(matrixL)"""
+    #Mapeamento da diagonal a
+    i = 0 
+    while i < ordemMatrix-1 :
+        numberCell = float(input(f'Insira o valor de a{i+2}:'))
+        vectora.append(numberCell)
 
-#Criação da matriz quadrática de ordem N
-def newSquareMatrix(ordemMatrix):
-    matrix=[]
-    for lines in range(ordemMatrix):
-        colums = []
-        for column in range(ordemMatrix):
-            colums.append(0)
-        matrix.append(colums)
-    return matrix
+        i = i + 1
 
-def addVectorOnMatrix(order, vector, matrix):
-    matrix = matrix
-    if order == "a":
-        for i in range(len(vector)):
-            matrix[i+1][i] = vector[i]
-    elif order == "b":
-        for i in range(len(vector)):
-            matrix[i][i] = vector[i]
-    elif order == "c":
-        for i in range(len(vector)):
-            matrix[i][i+1] = vector[i]
-    else:
-        print("Ocorreu algum ERRO, verifique os seus dados")
+    #Mapeamento da diagonal b
+    i = 0 
+    while i < ordemMatrix :
+        numberCell = float(input(f'Insira o valor de b{i+1}:'))
+        vectorb.append(numberCell)
 
-ordemMatrix = int(input("Insira a ordem da sua matriz:"))
+        i = i + 1
 
-matrix = newSquareMatrix(ordemMatrix)
-vectora = []
-vectorb = []
-vectorc = []
+    #Mapeamento da diagonal c
+    i = 0 
+    while i < ordemMatrix-1 :
+        numberCell = float(input(f'Insira o valor de c{i+2}:'))
+        vectorc.append(numberCell)
 
-#Mapeamento da diagonal a
-i = 0 
-while i < ordemMatrix-1 :
-    numberCell = int(input(f'Insira o valor de a{i+2}:'))
-    vectora.append(numberCell)
+        i = i + 1
 
-    i = i + 1
+    #Construção da matriz A
+    addVectorOnMatrix("a", vectora, matrix)
+    addVectorOnMatrix("b", vectorb, matrix)
+    addVectorOnMatrix("c", vectorc, matrix)
 
-#Mapeamento da diagonal b
-i = 0 
-while i < ordemMatrix :
-    numberCell = int(input(f'Insira o valor de b{i}:'))
-    vectorb.append(numberCell)
+    #A Matriz U possui a seguinte consição u(i,i+1) = a(i,i+1)
+    uMatrix = newSquareMatrix(ordemMatrix)
+    addVectorOnMatrix("c", vectorc, uMatrix)
+    uMatrix[0] = matrix[0]
 
-    i = i + 1
+    """A Matriz L é composta por uma diagonal principal formada por "1" e os multiplicadores
+    Neste caso, os unicos multiplicadores não nulos são l(i+1,i). Portanto, podemos escrever os dados em um vetor"""
+    lMatrix = newSquareMatrix(ordemMatrix)
+    addVectorOnMatrix("b", [1]*ordemMatrix, lMatrix)
+    lVector = []
 
-#Mapeamento da diagonal c
-i = 0 
-while i < ordemMatrix-1 :
-    numberCell = int(input(f'Insira o valor de c{i+2}:'))
-    vectorc.append(numberCell)
+    print(f'A Matriz introduzida foi {matrix} \n\n')
 
-    i = i + 1
+    line = 1
+    column = 0
 
-#Construção da matriz A
-addVectorOnMatrix("a", vectora, matrix)
-addVectorOnMatrix("b", vectorb, matrix)
-addVectorOnMatrix("c", vectorc, matrix)
+    while line < ordemMatrix:
+        multi = matrix[line][column]/matrix[line-1][column]
+        lMatrix[line][column] = multi
+        lVector.append(multi)
+        for i in range(2):
+            matrix[line][column] = matrix[line][column] - multi*matrix[line-1][column]
+            column = column + 1
+            if line == column:
+                uMatrix[line][column] = vectorb[line] - multi*vectorc[line-1]
+        line = line + 1
+        column = line - 1
 
-#A Matriz U possui a seguinte verdade u(i,i+1) = a(i,i+1)
-uMatrix = newSquareMatrix(ordemMatrix)
-addVectorOnMatrix("c", vectorc, uMatrix)
-uMatrix[0] = matrix[0]
-
-lMatrix = newSquareMatrix(ordemMatrix)
-lVector = []
-line = 1
-column = 0
-
-while line < ordemMatrix:
-    multi = matrix[line][column]/matrix[line-1][column]
-    lMatrix[line][column] = multi
-    lVector.append(multi)
-    for i in range(2):
-        matrix[line][column] = matrix[line][column] - multi*matrix[line-1][column]
-        column = column + 1
-        if line == column:
-            uMatrix[line][column] = vectorb[line] - multi*vectorc[line-1]
-    line = line + 1
-    column = line - 1
-
-print(lMatrix)
-print(uMatrix)
-print(lVector)
+    print(f'A sua matriz U é : \n {uMatrix} \n\n')
+    print(f'O seu vetor L é: \n {lVector},\n ou seja, sua matriz L é \n {lMatrix}')
