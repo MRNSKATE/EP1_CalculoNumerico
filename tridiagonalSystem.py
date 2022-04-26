@@ -36,6 +36,27 @@ def secondExercise():
     addVectorOnMatrix("a", vectora, matrix)
     addVectorOnMatrix("b", vectorb, matrix)
     addVectorOnMatrix("c", vectorc, matrix)
-    
+
+    TMatrix = []
+    VVector = []
+    WVector = []
+    bn = matrix[-1][-1]
+
+    #Mapeamento da Matriz T e vetor V
+    for i in range(len(matrix) - 1):
+        line = matrix[i].copy()
+        VVector.append(line[-1])
+        del(line[-1])
+        TMatrix.append(line)
+
+    #Mapeamento do vetor W
+    line = matrix[len(matrix)-1].copy()
+    del(line[-1])
+    WVector.append(line)
+
+
     print(matrix)
-    print(vectora, vectorb, vectorc)
+    print(TMatrix)
+    print(VVector)
+    print(WVector)
+    print(bn)

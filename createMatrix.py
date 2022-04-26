@@ -22,9 +22,9 @@ def addVectorOnMatrix(order, vector, matrix):
             matrix[i][i] = vector[i]
     elif order == "c":
         if len(vector) == len(matrix):
-            matrix[len(matrix)-1][0] = vector[0]
+            matrix[len(matrix)-1][0] = vector[len(matrix)-1]
             for i in range(len(vector)-1):
-                matrix[i][i+1] = vector[i+1]
+                matrix[i][i+1] = vector[i]
         else:
             for i in range(len(vector)):
                 matrix[i][i+1] = vector[i]
