@@ -1,4 +1,3 @@
-from tridiagonalULMatrix import *
 from createMatrix import *
 
 def secondExercise():
@@ -8,8 +7,9 @@ def secondExercise():
     vectorb = []
     vectorc = []
     matrix = newSquareMatrix(ordemMatrix)
-    
-     #Mapeamento da diagonal a
+    vectord = []
+
+    #Mapeamento da diagonal a
     i = 0 
     while i < ordemMatrix :
         numberCell = float(input(f'Insira o valor de a{i+1}:'))
@@ -33,6 +33,12 @@ def secondExercise():
 
         i = i + 1
 
+    #Mapeamento do vetor d
+    print("Muito bem, agora que você já inseriu a sua matriz A, siga os próximos passos para o mapeamento do vetor d \n")
+    for i in range(len(matrix) ):
+        itemd = float(input(f'Insira o item d{i+1} do seu vetor d: '))
+        vectord.append(itemd)
+
     addVectorOnMatrix("a", vectora, matrix)
     addVectorOnMatrix("b", vectorb, matrix)
     addVectorOnMatrix("c", vectorc, matrix)
@@ -54,9 +60,14 @@ def secondExercise():
     del(line[-1])
     WVector.append(line)
 
+    lVector = []
+
+    line = 1
+    column = 0
 
     print(matrix)
     print(TMatrix)
     print(VVector)
     print(WVector)
+    print(vectord)
     print(bn)

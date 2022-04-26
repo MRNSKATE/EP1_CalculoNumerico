@@ -68,3 +68,5 @@ def firstExercise():
 
     print(f'A sua matriz U é : \n {uMatrix} \n\n')
     print(f'O seu vetor L é: \n {lVector},\n ou seja, sua matriz L é \n {lMatrix}')
+
+    return 
