@@ -57,8 +57,6 @@ def secondExercise():
         del(line[-1])
         TMatrix.append(line)
 
-    print(TMatrix)
-
     #Mapeamento do vetor W
     line = matrix[len(matrix)-1].copy()
     del(line[-1])
@@ -96,11 +94,20 @@ def secondExercise():
         line = line + 1
         column = line - 1
 
-    #Encontrando o vetor y~
+    #Encontrando o vetor y~ e o vetor z~
     
-    vectordCopy = vectord[:]
-    vectord.pop()
+    vectordCopy = vectord.copy()
+    vectordCopy.pop()
     vectory = SystemSolutionUL(lMatrix, uMatrix, vectordCopy)
     vectorz = SystemSolutionUL(lMatrix, uMatrix, VVector)
     print(vectory)
     print(vectorz)
+    print(vectord)
+
+    print(vectorc)
+    print(vectorb)
+
+    #Encontrando xn
+    xn = (vectord[-1] - (vectorc[-1]*vectory[0]) - (vectora[-1]*vectory[-2]))/(vectorb(-1) - (vectorc[-1]*vectorz[0]) - (vectora[-1]*vectorz[-2]))
+
+    
