@@ -97,10 +97,10 @@ def secondExercise():
         column = line - 1
 
     #Encontrando o vetor y~
-    vectord.pop()
-    SystemSolutionUL(lMatrix, uMatrix, vectord)
     
-    print(matrix)
-    print(uMatrix)
-    print(TMatrix)
-    print(TMatrixCopy)
+    vectordCopy = vectord[:]
+    vectord.pop()
+    vectory = SystemSolutionUL(lMatrix, uMatrix, vectordCopy)
+    vectorz = SystemSolutionUL(lMatrix, uMatrix, VVector)
+    print(vectory)
+    print(vectorz)

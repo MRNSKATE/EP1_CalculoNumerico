@@ -30,3 +30,22 @@ def addVectorOnMatrix(order, vector, matrix):
                 matrix[i][i+1] = vector[i]
     else:
         print("Ocorreu algum ERRO, verifique os seus dados")
+
+def decompositionULMatrix (ordemMatrix, matrix, lMatrix, lVector, uMatrix, vectorb, vectorc):
+    line = 1
+    column = 0
+    while line < ordemMatrix - 1:
+        multi = matrix[line][column]/matrix[line-1][column]
+        lMatrix[line][column] = multi
+        lVector.append(multi)
+        for i in range(2):
+            matrix[line][column] = matrix[line][column] - multi*matrix[line-1][column]
+            column = column + 1
+            if line == column:
+                uMatrix[line][column] = vectorb[line] - multi*vectorc[line-1]
+        line = line + 1
+        column = line - 1
+
+    print(lMatrix)
+    print(lVector)
+    print(uMatrix)
