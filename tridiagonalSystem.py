@@ -1,4 +1,5 @@
 from createMatrix import *
+from systemSolution import *
 
 def secondExercise():
     ordemMatrix = int(input("Insira a ordem da sua matriz:"))
@@ -60,14 +61,45 @@ def secondExercise():
     del(line[-1])
     WVector.append(line)
 
+    #Criação da estrutura da Matriz L
+    lMatrix = newSquareMatrix(ordemMatrix - 1)
+    addVectorOnMatrix("b", [1]*(ordemMatrix-1), lMatrix)
     lVector = []
+
+    #Cração da estrutura da Matriz U
+    uMatrix = newSquareMatrix(ordemMatrix - 1)
+    vectorcCopy = vectorc.copy()
+    del(vectorcCopy[-1])
+    del(vectorcCopy[-2])
+    addVectorOnMatrix("c", vectorcCopy, uMatrix)
+    uMatrix[0] = matrix[0].copy()
+    TMatrixCopy = TMatrix.copy()
+
+    #Achando as Matrizes U e L da Matriz T
 
     line = 1
     column = 0
 
-    print(matrix)
-    print(TMatrix)
+    while line < ordemMatrix - 1:
+        multi = TMatrixCopy[line][column]/TMatrixCopy[line-1][column]
+        lMatrix[line][column] = multi
+        lVector.append(multi)
+        for i in range(2):
+            TMatrixCopy[line][column] = TMatrixCopy[line][column] - multi*TMatrixCopy[line-1][column]
+            column = column + 1
+            if line == column:
+                uMatrix[line][column] = vectorb[line] - multi*vectorc[line-1]
+        line = line + 1
+        column = line - 1
+
+    #Encontrando o vetor y~
+    
+    """print(matrix)
+    
     print(VVector)
     print(WVector)
     print(vectord)
-    print(bn)
+    print(bn)"""
+    print(TMatrix)
+    print(lMatrix)
+    print(uMatrix)
