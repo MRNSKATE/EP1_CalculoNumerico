@@ -1,5 +1,6 @@
 from createMatrix import *
 from systemSolution import *
+import numpy
 
 def secondExercise():
     ordemMatrix = int(input("Insira a ordem da sua matriz:"))
@@ -56,6 +57,8 @@ def secondExercise():
         del(line[-1])
         TMatrix.append(line)
 
+    print(TMatrix)
+
     #Mapeamento do vetor W
     line = matrix[len(matrix)-1].copy()
     del(line[-1])
@@ -66,14 +69,15 @@ def secondExercise():
     addVectorOnMatrix("b", [1]*(ordemMatrix-1), lMatrix)
     lVector = []
 
-    #Cração da estrutura da Matriz U
+    #Criação da estrutura da Matriz U
     uMatrix = newSquareMatrix(ordemMatrix - 1)
     vectorcCopy = vectorc.copy()
     del(vectorcCopy[-1])
     del(vectorcCopy[-2])
     addVectorOnMatrix("c", vectorcCopy, uMatrix)
     uMatrix[0] = matrix[0].copy()
-    TMatrixCopy = TMatrix.copy()
+    uMatrix[0].pop()
+    TMatrixCopy = numpy.copy(TMatrix)
 
     #Achando as Matrizes U e L da Matriz T
 
@@ -93,13 +97,10 @@ def secondExercise():
         column = line - 1
 
     #Encontrando o vetor y~
+    vectord.pop()
+    SystemSolutionUL(lMatrix, uMatrix, vectord)
     
-    """print(matrix)
-    
-    print(VVector)
-    print(WVector)
-    print(vectord)
-    print(bn)"""
-    print(TMatrix)
-    print(lMatrix)
+    print(matrix)
     print(uMatrix)
+    print(TMatrix)
+    print(TMatrixCopy)
