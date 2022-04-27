@@ -100,14 +100,14 @@ def secondExercise():
     vectordCopy.pop()
     vectory = SystemSolutionUL(lMatrix, uMatrix, vectordCopy)
     vectorz = SystemSolutionUL(lMatrix, uMatrix, VVector)
-    print(vectory)
-    print(vectorz)
-    print(vectord)
-
-    print(vectorc)
-    print(vectorb)
 
     #Encontrando xn
-    xn = (vectord[-1] - (vectorc[-1]*vectory[0]) - (vectora[-1]*vectory[-2]))/(vectorb(-1) - (vectorc[-1]*vectorz[0]) - (vectora[-1]*vectorz[-2]))
+    xn = (vectord[-1] - (vectorc[-1]*vectory[0]) - (vectora[-1]*vectory[-2]))/(vectorb[-1] - (vectorc[-1]*vectorz[0]) - (vectora[-1]*vectorz[-2]))
 
-    
+    #Encontrando o x~
+    for i in range(len(vectorz)):
+        vectorz[i] = vectorz[i]*xn
+    vectorx = subtractMatrixOneLine(vectory, vectorz)
+    vectorx.append(xn)
+    print(matrix)
+    print(vectorx)

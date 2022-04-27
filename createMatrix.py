@@ -38,3 +38,11 @@ def mutiplyMatrixforNumber(number, matrix):
             item = number*matrix[i][j]
             newMatrix[i][j] = item
     return newMatrix
+
+def subtractMatrixOneLine(firstMatrix, secondMatrix):
+    newMatrix = []
+    for i in range(len(firstMatrix)):
+        sub = firstMatrix[i] - secondMatrix[i]
+        newMatrix.append(sub)
+    
+    return newMatrix
