@@ -17,4 +17,5 @@ if module != None:
     elif module == 2:
         print('\n\n\n\n\n\n')
         secondExercise()
-    
+    else:
+        print("Escolha um módulo válido e reinicie o programa")

@@ -2,49 +2,9 @@ from createMatrix import *
 from systemSolution import *
 import numpy
 
-def secondExercise():
-    ordemMatrix = int(input("Insira a ordem da sua matriz:"))
-
-    vectora = []
-    vectorb = []
-    vectorc = []
-    matrix = newSquareMatrix(ordemMatrix)
-    vectord = []
-
-    #Mapeamento da diagonal a
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de a{i+1}:'))
-        vectora.append(numberCell)
-
-        i = i + 1
-
-    #Mapeamento da diagonal b
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de b{i+1}:'))
-        vectorb.append(numberCell)
-
-        i = i + 1
-
-    #Mapeamento da diagonal c
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de c{i+1}:'))
-        vectorc.append(numberCell)
-
-        i = i + 1
-
-    #Mapeamento do vetor d
-    print("Muito bem, agora que você já inseriu a sua matriz A, siga os próximos passos para o mapeamento do vetor d \n")
-    for i in range(len(matrix) ):
-        itemd = float(input(f'Insira o item d{i+1} do seu vetor d: '))
-        vectord.append(itemd)
-
-    addVectorOnMatrix("a", vectora, matrix)
-    addVectorOnMatrix("b", vectorb, matrix)
-    addVectorOnMatrix("c", vectorc, matrix)
-
+def secondExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], vectord=[], ordemMatrix= 0,  validation=True ):
+    if validation == True:
+        ordemMatrix, matrix, vectora, vectorb, vectorc, vectord = mapVectorSecond()
     TMatrix = []
     VVector = []
     WVector = []
@@ -109,5 +69,7 @@ def secondExercise():
         vectorz[i] = vectorz[i]*xn
     vectorx = subtractMatrixOneLine(vectory, vectorz)
     vectorx.append(xn)
+
+    
     print(matrix)
     print(vectorx)

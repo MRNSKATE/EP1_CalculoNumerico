@@ -46,3 +46,87 @@ def subtractMatrixOneLine(firstMatrix, secondMatrix):
         newMatrix.append(sub)
     
     return newMatrix
+
+def mapVectorFirst():
+    ordemMatrix = int(input("Insira a ordem da sua matriz:"))
+    matrix = newSquareMatrix(ordemMatrix)
+    vectora = []
+    vectorb = []
+    vectorc = []
+
+    #Mapeamento da diagonal a
+    i = 0 
+    while i < ordemMatrix-1 :
+        numberCell = float(input(f'Insira o valor de a{i+2}:'))
+        vectora.append(numberCell)
+
+        i = i + 1
+
+    #Mapeamento da diagonal b
+    i = 0 
+    while i < ordemMatrix :
+        numberCell = float(input(f'Insira o valor de b{i+1}:'))
+        vectorb.append(numberCell)
+
+        i = i + 1
+
+    #Mapeamento da diagonal c
+    i = 0 
+    while i < ordemMatrix-1 :
+        numberCell = float(input(f'Insira o valor de c{i+2}:'))
+        vectorc.append(numberCell)
+
+        i = i + 1
+
+    #Construção da matriz A
+    addVectorOnMatrix("a", vectora, matrix)
+    addVectorOnMatrix("b", vectorb, matrix)
+    addVectorOnMatrix("c", vectorc, matrix)
+
+    return ordemMatrix, matrix, vectora, vectorb, vectorc
+
+def mapVectorSecond():
+    ordemMatrix = int(input("Insira a ordem da sua matriz:"))
+
+    vectora = []
+    vectorb = []
+    vectorc = []
+    matrix = newSquareMatrix(ordemMatrix)
+    vectord = []
+
+    #Mapeamento da diagonal a
+    i = 0 
+    while i < ordemMatrix :
+        numberCell = float(input(f'Insira o valor de a{i+1}:'))
+        vectora.append(numberCell)
+
+        i = i + 1
+
+    #Mapeamento da diagonal b
+    i = 0 
+    while i < ordemMatrix :
+        numberCell = float(input(f'Insira o valor de b{i+1}:'))
+        vectorb.append(numberCell)
+
+        i = i + 1
+
+    #Mapeamento da diagonal c
+    i = 0 
+    while i < ordemMatrix :
+        numberCell = float(input(f'Insira o valor de c{i+1}:'))
+        vectorc.append(numberCell)
+
+        i = i + 1
+
+    #Mapeamento do vetor d
+    print("Muito bem, agora que você já inseriu a sua matriz A, siga os próximos passos para o mapeamento do vetor d \n")
+    for i in range(len(matrix) ):
+        itemd = float(input(f'Insira o item d{i+1} do seu vetor d: '))
+        vectord.append(itemd)
+
+    addVectorOnMatrix("a", vectora, matrix)
+    addVectorOnMatrix("b", vectorb, matrix)
+    addVectorOnMatrix("c", vectorc, matrix)
+
+    return ordemMatrix, matrix, vectora, vectorb, vectorc, vectord
+    

@@ -1,42 +1,11 @@
 from createMatrix import *
 
-def firstExercise():
+def firstExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], ordemMatrix= 0,  validation=True ):
     print('O primeiro exercício consiste em realizar uma decomposição LU de uma matriz tridiagonal.\n Lembre-se, a matriz a ser introduzida deve ser triangularizável pelo Método de Eliminação de Gauss sem trocas de linhas')
-    ordemMatrix = int(input("Insira a ordem da sua matriz:"))
 
-    matrix = newSquareMatrix(ordemMatrix)
-    vectora = []
-    vectorb = []
-    vectorc = []
-
-    #Mapeamento da diagonal a
-    i = 0 
-    while i < ordemMatrix-1 :
-        numberCell = float(input(f'Insira o valor de a{i+2}:'))
-        vectora.append(numberCell)
-
-        i = i + 1
-
-    #Mapeamento da diagonal b
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de b{i+1}:'))
-        vectorb.append(numberCell)
-
-        i = i + 1
-
-    #Mapeamento da diagonal c
-    i = 0 
-    while i < ordemMatrix-1 :
-        numberCell = float(input(f'Insira o valor de c{i+2}:'))
-        vectorc.append(numberCell)
-
-        i = i + 1
-
-    #Construção da matriz A
-    addVectorOnMatrix("a", vectora, matrix)
-    addVectorOnMatrix("b", vectorb, matrix)
-    addVectorOnMatrix("c", vectorc, matrix)
+    #Verifica se a função está sendo testada ou chamada pelo usuário
+    if validation == True:
+        ordemMatrix, matrix, vectora, vectorb, vectorc = mapVectorFirst()
 
     #A Matriz U possui a seguinte consição u(i,i+1) = a(i,i+1)
     uMatrix = newSquareMatrix(ordemMatrix)
