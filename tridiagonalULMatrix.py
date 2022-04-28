@@ -1,4 +1,6 @@
 from createMatrix import *
+import numpy
+
 
 def firstExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], ordemMatrix= 0,  validation=True ):
     print('O primeiro exercício consiste em realizar uma decomposição LU de uma matriz tridiagonal.\n Lembre-se, a matriz a ser introduzida deve ser triangularizável pelo Método de Eliminação de Gauss sem trocas de linhas')
@@ -18,8 +20,6 @@ def firstExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], ordemMatrix
     addVectorOnMatrix("b", [1]*ordemMatrix, lMatrix)
     lVector = []
 
-    print(f'A Matriz introduzida foi {matrix} \n\n')
-
     line = 1
     column = 0
 
@@ -35,7 +35,7 @@ def firstExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], ordemMatrix
         line = line + 1
         column = line - 1
 
-    print(f'A sua matriz U é : \n {uMatrix} \n\n')
-    print(f'O seu vetor L é: \n {lVector},\n ou seja, sua matriz L é \n {lMatrix}')
+    print(f'A sua matriz U é : \n \n{numpy.array(uMatrix)} \n\n')
+    print(f'O seu vetor L é: \n \n {numpy.array(lVector)},\n \n ou seja, sua matriz L é \n \n{numpy.array(lMatrix)}')
 
     return 

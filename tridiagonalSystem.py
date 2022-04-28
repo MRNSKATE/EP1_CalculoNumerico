@@ -1,5 +1,6 @@
 from createMatrix import *
 from systemSolution import *
+from tridiagonalULMatrix import *
 import numpy
 
 def secondExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], vectord=[], ordemMatrix= 0,  validation=True ):
@@ -71,5 +72,4 @@ def secondExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], vectord=[]
     vectorx.append(xn)
 
     
-    print(matrix)
-    print(vectorx)
+    print(f'O seu vetor solução é: \n x = {numpy.array(vectorx)}')

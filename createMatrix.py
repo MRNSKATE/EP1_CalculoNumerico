@@ -1,3 +1,6 @@
+import numpy
+
+
 def newSquareMatrix(ordemMatrix):
     matrix=[]
     for lines in range(ordemMatrix):
@@ -48,85 +51,105 @@ def subtractMatrixOneLine(firstMatrix, secondMatrix):
     return newMatrix
 
 def mapVectorFirst():
+    correctMatrix = False
+    
     ordemMatrix = int(input("Insira a ordem da sua matriz:"))
-    matrix = newSquareMatrix(ordemMatrix)
-    vectora = []
-    vectorb = []
-    vectorc = []
 
-    #Mapeamento da diagonal a
-    i = 0 
-    while i < ordemMatrix-1 :
-        numberCell = float(input(f'Insira o valor de a{i+2}:'))
-        vectora.append(numberCell)
+    while correctMatrix == False:
+        matrix = newSquareMatrix(ordemMatrix)
+        vectora = []
+        vectorb = []
+        vectorc = []
 
-        i = i + 1
+        #Mapeamento da diagonal a
+        i = 0 
+        while i < ordemMatrix-1 :
+            numberCell = float(input(f'Insira o valor de a{i+2}:'))
+            vectora.append(numberCell)
 
-    #Mapeamento da diagonal b
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de b{i+1}:'))
-        vectorb.append(numberCell)
+            i = i + 1
 
-        i = i + 1
+        #Mapeamento da diagonal b
+        i = 0 
+        while i < ordemMatrix :
+            numberCell = float(input(f'Insira o valor de b{i+1}:'))
+            vectorb.append(numberCell)
 
-    #Mapeamento da diagonal c
-    i = 0 
-    while i < ordemMatrix-1 :
-        numberCell = float(input(f'Insira o valor de c{i+2}:'))
-        vectorc.append(numberCell)
+            i = i + 1
 
-        i = i + 1
+        #Mapeamento da diagonal c
+        i = 0 
+        while i < ordemMatrix-1 :
+            numberCell = float(input(f'Insira o valor de c{i+2}:'))
+            vectorc.append(numberCell)
 
-    #Construção da matriz A
-    addVectorOnMatrix("a", vectora, matrix)
-    addVectorOnMatrix("b", vectorb, matrix)
-    addVectorOnMatrix("c", vectorc, matrix)
+            i = i + 1
+
+        #Construção da matriz A
+        addVectorOnMatrix("a", vectora, matrix)
+        addVectorOnMatrix("b", vectorb, matrix)
+        addVectorOnMatrix("c", vectorc, matrix)
+
+        print(f'A Matriz inserida foi: \n {numpy.array(matrix)}')
+        print('Para continuar o programa escolha uma das opções abaixo:')
+        validate = int(input('(1) A minha matriz está correta (2) Reescrever matriz\n'))
+        if validate != 2:
+            correctMatrix = True
 
     return ordemMatrix, matrix, vectora, vectorb, vectorc
 
 def mapVectorSecond():
+    correctMatrix = False
+    
     ordemMatrix = int(input("Insira a ordem da sua matriz:"))
 
-    vectora = []
-    vectorb = []
-    vectorc = []
-    matrix = newSquareMatrix(ordemMatrix)
-    vectord = []
+    while correctMatrix == False:
 
-    #Mapeamento da diagonal a
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de a{i+1}:'))
-        vectora.append(numberCell)
+        vectora = []
+        vectorb = []
+        vectorc = []
+        matrix = newSquareMatrix(ordemMatrix)
+        vectord = []
 
-        i = i + 1
+        #Mapeamento da diagonal a
+        i = 0 
+        while i < ordemMatrix :
+            numberCell = float(input(f'Insira o valor de a{i+1}:'))
+            vectora.append(numberCell)
 
-    #Mapeamento da diagonal b
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de b{i+1}:'))
-        vectorb.append(numberCell)
+            i = i + 1
 
-        i = i + 1
+        #Mapeamento da diagonal b
+        i = 0 
+        while i < ordemMatrix :
+            numberCell = float(input(f'Insira o valor de b{i+1}:'))
+            vectorb.append(numberCell)
 
-    #Mapeamento da diagonal c
-    i = 0 
-    while i < ordemMatrix :
-        numberCell = float(input(f'Insira o valor de c{i+1}:'))
-        vectorc.append(numberCell)
+            i = i + 1
 
-        i = i + 1
+        #Mapeamento da diagonal c
+        i = 0 
+        while i < ordemMatrix :
+            numberCell = float(input(f'Insira o valor de c{i+1}:'))
+            vectorc.append(numberCell)
 
-    #Mapeamento do vetor d
-    print("Muito bem, agora que você já inseriu a sua matriz A, siga os próximos passos para o mapeamento do vetor d \n")
-    for i in range(len(matrix) ):
-        itemd = float(input(f'Insira o item d{i+1} do seu vetor d: '))
-        vectord.append(itemd)
+            i = i + 1
 
-    addVectorOnMatrix("a", vectora, matrix)
-    addVectorOnMatrix("b", vectorb, matrix)
-    addVectorOnMatrix("c", vectorc, matrix)
+        #Mapeamento do vetor d
+        print("Muito bem, agora que você já inseriu a sua matriz A, siga os próximos passos para o mapeamento do vetor d \n")
+        for i in range(len(matrix) ):
+            itemd = float(input(f'Insira o item d{i+1} do seu vetor d: '))
+            vectord.append(itemd)
+
+        addVectorOnMatrix("a", vectora, matrix)
+        addVectorOnMatrix("b", vectorb, matrix)
+        addVectorOnMatrix("c", vectorc, matrix)
+
+        print(f'A Matriz inserida foi: \n {numpy.array(matrix)} \n \n e o vetor d foi: {numpy.array(vectord)}')
+        print('Para continuar o programa escolha uma das opções abaixo:')
+        validate = int(input('(1) Os meus dados estão corretos (2) Reescrever dados\n'))
+        if validate != 2:
+            correctMatrix = True
 
     return ordemMatrix, matrix, vectora, vectorb, vectorc, vectord
     
