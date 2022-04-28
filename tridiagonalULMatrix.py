@@ -3,7 +3,6 @@ import numpy
 
 
 def firstExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], ordemMatrix= 0,  validation=True ):
-    print('O primeiro exercício consiste em realizar uma decomposição LU de uma matriz tridiagonal.\n Lembre-se, a matriz a ser introduzida deve ser triangularizável pelo Método de Eliminação de Gauss sem trocas de linhas')
 
     #Verifica se a função está sendo testada ou chamada pelo usuário
     if validation == True:

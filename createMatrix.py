@@ -52,7 +52,8 @@ def subtractMatrixOneLine(firstMatrix, secondMatrix):
 
 def mapVectorFirst():
     correctMatrix = False
-    
+    print('O primeiro exercício consiste em realizar uma decomposição LU de uma matriz tridiagonal.\n Lembre-se, a matriz a ser introduzida deve ser triangularizável pelo Método de Eliminação de Gauss sem trocas de linhas')
+
     ordemMatrix = int(input("Insira a ordem da sua matriz:"))
 
     while correctMatrix == False:
