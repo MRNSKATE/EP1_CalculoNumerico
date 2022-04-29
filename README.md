@@ -135,10 +135,11 @@ Assim termos a exibição do vetor solução x:
       
 ### (3) Testes automatizados
 Os testes automatizados preenchem os vetores a, b e c das matrizes e o vetor d do sistema de maneira automática, considerando n=20, a partir das seguintes expressões:
-ai = (2i − 1)/4i , 1 ≤ i ≤ n − 1, an = (2n − 1)/2n,
-ci = 1 − ai, 1 ≤ i ≤ n,
-bi = 2, 1 ≤ i ≤ n,
-di = cos(2πi^2)/n^2, 1 ≤ i ≤ n.
+        
+      ai = (2i − 1)/4i , 1 ≤ i ≤ n − 1, an = (2n − 1)/2n,
+      ci = 1 − ai, 1 ≤ i ≤ n,
+      bi = 2, 1 ≤ i ≤ n,
+      di = cos(2πi^2)/n^2, 1 ≤ i ≤ n.
 
 Caso o usuário deseje testar a solução 1 com os dados anteriores os últimos dos vetores a e c são excluidos.
 
