@@ -3,7 +3,7 @@ from tridiagonalSystem import *
 from test import *
 
 print('Seja bem vindo ao EP 1 de cálculo numérico')
-print('Neste trabalho possuímos duas grandes soluções: \n A primeira é a decomposição LU de uma matriz tridiagonal, enquanto que a segunda é a resolução de um sistema a partr de um matriz tridiagonal cíclica:')
+print('Neste trabalho possuímos duas grandes soluções: \n A primeira é a decomposição LU de uma matriz tridiagonal, enquanto que a segunda é a resolução de um sistema a partir de um matriz tridiagonal cíclica:')
 print('Para iniciarmos, escolha um módulo:')
 print('(1) Decomposição LU        (2) Resolução de sistemas        (3) Testes Automatizados')
 try:
@@ -23,3 +23,5 @@ if module != None:
         testAplication()
     else:
         print("Escolha um módulo válido e reinicie o programa")
+
+input()
