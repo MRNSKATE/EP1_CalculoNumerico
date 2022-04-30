@@ -37,4 +37,4 @@ def firstExercise(matrix = [[]], vectora=[], vectorb=[], vectorc=[], ordemMatrix
     print(f'A sua matriz U é : \n \n{numpy.array(uMatrix)} \n\n')
     print(f'O seu vetor L é: \n \n {numpy.array(lVector)},\n \n ou seja, sua matriz L é \n \n{numpy.array(lMatrix)}')
 
-    return 
+    return lMatrix, uMatrix
