@@ -1,3 +1,4 @@
+#Marco Antônio Rudas Napoli, n°USP: 11857970
 from tridiagonalULMatrix import *
 from tridiagonalSystem import *
 from test import *
